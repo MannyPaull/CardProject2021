@@ -11,29 +11,36 @@ function newValues(){
   cards.number[i] = numbers[Math.floor(Math.random() * numbers.length)];
 };
 
+function dupecheck(){
+  for (j = 0; j < 30; j++){     //checks and reassigns any duplicate, duplex values in 'cards'
+    if (j == 0){
+      if (cards[j] == cards[j+1, 30]){
+        cards.colour[j] = colours[Math.floor(Math.random() * colours.length)];
+        cards.number[j] = numbers[Math.floor(Math.random() * numbers.length)];
+        j = 0;
+      }
+    }
+    if (j == 30){
+      if (cards[j] == cards[0, j-1]){
+        cards.colour[j] = colours[Math.floor(Math.random() * colours.length)];
+        cards.number[j] = numbers[Math.floor(Math.random() * numbers.length)];
+        j = 0;
+      }
+    }
+    if (j == [1,30])
+      if (cards[j] == cards[0, j-1] || cards[j+1, 30]){
+      cards.colour[j] = colours[Math.floor(Math.random() * colours.length)];
+        cards.number[j] = numbers[Math.floor(Math.random() * numbers.length)];
+      j = 0;
+    }
+  };
+};
 
-
-for (i = 0; i < 30; i++){                                                //assigns 30 duplex values to 'cards'
+for (i = 0; i < 30; i++){                             //assigns 30 duplex values to 'cards'
   newValues()
 };
 
-
-// for (let j = 0; j < 30; j++){             //checks and reassigns any duplicate , duplex values in 'cards'
-//   if (j == 0){
-//     if (cards[j] == cards[j+1,30]){
-//       newValues();
-//       j = 0};
-//     }
-//   if (j == 30){
-//     if (cards[j] == cards[0,j-1]){
-//       newValues();
-//       j = 0};
-//     }
-//   if (cards[j] == cards[0,j-1] || cards[j+1,30]){
-//     newValues();
-//     j = 0};
-// };
-
+dupecheck();
 
 console.log(cards);
 
@@ -43,11 +50,10 @@ function shuffle(array){
     let tempVal = array[e];
     array [e] = array[f];
     array [f] = tempVal;
-  
-  }
-}
+  };
+};
 
-function shuffleDeck(){
+function shuffleDeck(){          //randomizes duplex values to a different order in the deck.
 
   deckValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
   
@@ -56,7 +62,7 @@ function shuffleDeck(){
   shuffledColours = [];
   shuffledNumbers = [];
 
-  for (let k = 0; k < 30 ; k++){
+  for (k = 0; k < 30 ; k++){
     let n = deckValues[k];
     shuffledColours[n] = cards.colour[k];
     shuffledNumbers[n] = cards.number[k];
@@ -64,7 +70,6 @@ function shuffleDeck(){
 
   console.log(cards.colour = shuffledColours);
   console.log(cards.number = shuffledNumbers);
-
-}
+};
 
 shuffleDeck();
